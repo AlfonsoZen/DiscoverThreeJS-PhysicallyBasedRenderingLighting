@@ -1,14 +1,16 @@
-import { BoxBufferGeometry, Mesh, MeshBasicMaterial } from 'three';
+import { BoxBufferGeometry, Mesh, MeshStandardMaterial } from 'three';
 
 function createCube() {
   // create a geometry
   const geometry = new BoxBufferGeometry(2, 2, 2);
 
-  // create a default (white) Basic material
-  const material = new MeshBasicMaterial();
+  // Swith the old "basic" material to a physically correct "standard" material
+  const material = new MeshStandardMaterial( { color: 'rebeccapurple'} );
 
   // create a Mesh containing the geometry and material
   const cube = new Mesh(geometry, material);
+
+  cube.rotation.set( -.5, -.1, .8 );
 
   return cube;
 }
